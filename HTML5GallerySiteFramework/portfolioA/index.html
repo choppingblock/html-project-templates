@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML5GallerySiteFramework :: PortfolioA</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="author" content="The Chopping Block, Inc." />
+	<meta name="geo.country" content="US" />
+	<meta name="dc.language" content="en" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<script src="../assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	
+	<link rel="stylesheet" type="text/css" href="shadowbox/shadowbox.css">
+	<script type="text/javascript" src="shadowbox/shadowbox.js"></script>
+	<script type="text/javascript">
+	Shadowbox.init({
+	    overlayColor: "#000",
+		overlayOpacity: 0.8,
+		onOpen: shadowOpen,
+		onChange: shadowChange,
+		onClose: shadowClose
+	});
+	
+	
+	function shadowOpen(obj){
+		//alert("Open!");
+		
+		location.hash = obj.link.id;
+	};
+	
+	function shadowChange(obj){
+		//alert("Change!");
+		
+		location.hash = obj.link.id;
+	};
+	
+	function shadowClose(){
+		//alert("Close!");
+
+		window.location.hash = ''; // for older browsers, leaves a # behind
+		history.pushState('', document.title, window.location.pathname); // nice and clean
+	};
+	
+	// $(window).bind('hashchange', function() {
+	//   alert("Change!");
+	// 
+	// 	var pageURL = document.location.hash;
+	// 
+	//       var SBlinkRegEx = /(.*)(#.*)/;
+	//       var SBlinkRegExCG = SBlinkRegEx.exec(pageURL);
+	// 
+	//       if(SBlinkRegExCG){
+	//          var SBhashtag = SBlinkRegExCG[2];
+	// 		console.log('SBhashtag is: '+SBhashtag);
+	// 		console.dir(SBhashtag);
+	//          $(SBhashtag).trigger('click');
+	//       }
+	// 
+	// });
+	
+	</script>
+	
+	<script type="text/javascript">
+
+	        window.onload = function() {
+
+	            var pageURL = document.location.hash;
+
+	            var SBlinkRegEx = /(.*)(#.*)/;
+	            var SBlinkRegExCG = SBlinkRegEx.exec(pageURL);
+
+	            if(SBlinkRegExCG){
+	               var SBhashtag = SBlinkRegExCG[2];
+					console.log('SBhashtag is: '+SBhashtag);
+					console.dir(SBhashtag);
+	               $(SBhashtag).trigger('click');
+	            }
+
+	        }
+
+	    </script>
+	
+	<script src="../assets/js/sddm.js" type="text/javascript" charset="utf-8"></script>
+	
+	<link rel="stylesheet" href="../assets/css/styles.css" type="text/css" media="screen" charset="utf-8" />
+	
+	<style type="text/css" media="screen">		
+		/*local styles if any (quick tests and local only overrides)*/
+	</style>
+</head>
+<body>
+
+	<div id="wrap" >
+		
+		<div id="header" >
+			<h1><span class="brandcolor">Artists</span> Sample Site</h1>
+			<h2>My Awesome Site Tagline</h2>
+		</div>
+		
+		<div id="nav" >
+			<ul id="sddm">
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="#" onmouseover="mopen('m1')" onmouseout="mclosetime()">Portfolio</a>
+					<div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+						<a href="#">PortfolioA: Shadowbox.js</a>
+						<a href="../portfolioB/index.html">PortfolioB: Galleria</a>
+					</div>
+				</li>
+				<li><a href="http://wordpress.com" target="_blank">Blog</a></li>
+				<li><a href="../contact/index.html">Contact</a></li>
+			</ul>
+		</div>
+		
+		<div id="content" >
+			<a href="images/mbr_090409_8318.jpg" rel="shadowbox[galleryA]" title="Fish" id="fish"><img src="thumbnails/mbr_090409_8318.jpg" width="80" height="80" alt="Mbr 090820 2220"></a>
+			<a href="images/mbr_090820_2220.jpg" rel="shadowbox[galleryA]" title="Sad Robot" id="sadrobot"><img src="thumbnails/mbr_090820_2220.jpg" width="80" height="80" alt="Mbr 090820 2220"></a>
+			<a href="images/mbr_091003_3141.jpg" rel="shadowbox[galleryA]" title="Bridge" id="bridge"><img src="thumbnails/mbr_091003_3141.jpg" width="80" height="80" alt="Mbr 090820 2220"></a>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+		
+		<div id="footer" >
+			footer
+		</div>
+		
+	</div>
+	
+</body>
+</html>
