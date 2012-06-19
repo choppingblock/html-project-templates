@@ -29,39 +29,42 @@
 	function shadowOpen(obj){
 		//alert("Open!");
 		
-		location.hash = obj.link.id;
+		window.location.hash = obj.link.id;
 	};
 	
 	function shadowChange(obj){
 		//alert("Change!");
 		
-		location.hash = obj.link.id;
+		window.location.hash = obj.link.id;
 	};
 	
 	function shadowClose(){
-		//alert("Close!");
+			window.location.hash = ''; // for older browsers, leaves a # behind
+	//		history.pushState('', document.title, window.location.pathname); // nice and clean
+		};
 
-		window.location.hash = ''; // for older browsers, leaves a # behind
-		history.pushState('', document.title, window.location.pathname); // nice and clean
-	};
+		$(window).bind('hashchange', function() {
+
+			var pageURL = window.location.hash;
+
+		      var SBlinkRegEx = /(.*)(#(.*))/;
+		      var SBlinkRegExCG = SBlinkRegEx.exec(pageURL);
+
+		      if(SBlinkRegExCG){
+				var image = $(SBlinkRegExCG[2]);
+				var imageIndex = $("#content a").index(image);
+				Shadowbox.change(imageIndex);
+
+		      }else if(window.location.hash == ""){
+
+					Shadowbox.close();
+
+
+				}
+
+		});
 	
-	// $(window).bind('hashchange', function() {
-	//   alert("Change!");
-	// 
-	// 	var pageURL = document.location.hash;
-	// 
-	//       var SBlinkRegEx = /(.*)(#.*)/;
-	//       var SBlinkRegExCG = SBlinkRegEx.exec(pageURL);
-	// 
-	//       if(SBlinkRegExCG){
-	//          var SBhashtag = SBlinkRegExCG[2];
-	// 		console.log('SBhashtag is: '+SBhashtag);
-	// 		console.dir(SBhashtag);
-	//          $(SBhashtag).trigger('click');
-	//       }
-	// 
-	// });
-	
+
 	</script>
 	
 	<script type="text/javascript">
